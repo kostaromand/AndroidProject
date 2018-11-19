@@ -47,7 +47,6 @@ public class MapManager : MonoBehaviour
         }
         MapController mapController = newMap.GetComponent<MapController>();
         lastMap = mapController.CreateMap(entryPointInfo, mapSize, generator);
-        Debug.Log("Map Created");
         startVector += new Vector2(lastMap.Width, 0);
     }
 }

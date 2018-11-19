@@ -41,7 +41,6 @@ public class MapController : MonoBehaviour
         MapInfo.MapSize = mapSize;
         MapInfo.Width = mapSize.Horizontal * SpriteSize.x;
         MapInfo.Height = mapSize.Vertical * SpriteSize.y;
-        Debug.Log("Map Created");
         return MapInfo;
     }
 }

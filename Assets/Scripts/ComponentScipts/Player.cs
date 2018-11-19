@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        cam.GetComponent<CameraController>().Attach(transform, MoveTarget - transform.position);
     }
 
     void Move()
