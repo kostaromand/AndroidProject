@@ -2,7 +2,7 @@
 
 public class Map : MonoBehaviour
 {
-    public ExitInfo ExitInfo { get; set; }
+    public EntryPointInfo ExitInfo { get; set; }
     public MapSize MapSize { get; set; }
     public float Width { get;  set; }
     public float Height { get; set; }

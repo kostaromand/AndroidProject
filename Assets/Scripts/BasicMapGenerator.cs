@@ -8,17 +8,17 @@ public class BasicMapGenerator : IMapGenerator
 {
     public BasicMapGenerator() { }
 
-    public CellType[][] getMapPrototype(ExitInfo exitInfo, MapSize mapSize)
+    public Cell[][] getMapPrototype(EntryPointInfo exitInfo, MapSize mapSize)
     {
         int width = mapSize.Horizontal;
         int height = mapSize.Vertical;
-        CellType[][] cellMatrix = new CellType[width][];
+        Cell[][] cellMatrix = new Cell[width][];
         for(int i = 0;i< width;i++)
         {
-            cellMatrix[i] = new CellType[height];
+            cellMatrix[i] = new Cell[height];
             for (int j = 0; j < height; j++)
             {
-                cellMatrix[i][j] = new CellType("Road");
+                cellMatrix[i][j] = new Cell(CellType.Road);
             }
         }
         return cellMatrix;

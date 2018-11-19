@@ -24,20 +24,20 @@ public class MapController : MonoBehaviour
 
     }
 
-    public Map CreateMap(ExitInfo exitInfo, MapSize mapSize, IMapGenerator generator)
+    public Map CreateMap(EntryPointInfo entryPointInfo, MapSize mapSize, IMapGenerator generator)
     {
-        var MapPrototype = generator.getMapPrototype(exitInfo, mapSize);
+        var MapPrototype = generator.getMapPrototype(entryPointInfo, mapSize);
         float x = transform.position.x;
         float y = transform.position.y;
         for (int i = 0; i < mapSize.Horizontal; i++)
         {
             for (int j = 0; j < mapSize.Vertical; j++)
             {
-                GameObject gameObject = Cells.First(g => g.name == MapPrototype[i][j].CellTypeName);
+                GameObject gameObject = Cells.First(g => g.name == MapPrototype[i][j].getTypeName());
                 Instantiate(gameObject, new Vector3(x + i * SpriteSize.x, y + j * SpriteSize.y), Quaternion.identity, transform);
             }
         }
-        MapInfo.ExitInfo = exitInfo;
+        MapInfo.ExitInfo = entryPointInfo;
         MapInfo.MapSize = mapSize;
         MapInfo.Width = mapSize.Horizontal * SpriteSize.x;
         MapInfo.Height = mapSize.Vertical * SpriteSize.y;

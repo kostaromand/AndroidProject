@@ -15,9 +15,9 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         startVector = transform.position;
-        generator = new BasicMapGenerator();
+        generator = new BasicMapGenerator(); //<----------------- Здесь меняем генератор
         player = playerObject.GetComponent<Player>();
-        addNewMap();
+        AddNewMap();
     }
 
     // Update is called once per frame
@@ -27,26 +27,26 @@ public class MapManager : MonoBehaviour
         {
             var startX = lastMap.transform.position.x;
             if (player.transform.position.x > startX)
-                addNewMap();
+                AddNewMap();
         }
     }
-    public void addNewMap()
+    public void AddNewMap()
     {
         GameObject newMap = Instantiate(MapObject, startVector, Quaternion.identity, transform);
         MapSize mapSize = new MapSize(defaultMapSize.Horizontal, defaultMapSize.Vertical);
-        ExitInfo exitInfo;
+        EntryPointInfo entryPointInfo;
         if (lastMap == null)
         {
             int startPos = Random.Range(0, mapSize.Horizontal + 1);
             int endPos = Random.Range(0, mapSize.Horizontal + 1);
-            exitInfo = new ExitInfo(startPos, endPos);
+            entryPointInfo = new EntryPointInfo(startPos, endPos);
         }
         else
         {
-            exitInfo = lastMap.ExitInfo;
+            entryPointInfo = lastMap.ExitInfo;
         }
         MapController mapController = newMap.GetComponent<MapController>();
-        lastMap = mapController.CreateMap(exitInfo, mapSize, generator);
+        lastMap = mapController.CreateMap(entryPointInfo, mapSize, generator);
         Debug.Log("Map Created");
         startVector += new Vector2(lastMap.Width, 0);
     }

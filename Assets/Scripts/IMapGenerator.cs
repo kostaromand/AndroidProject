@@ -5,5 +5,5 @@ using System.Text;
 using UnityEngine;
 public interface IMapGenerator
 {
-    CellType[][] getMapPrototype(ExitInfo exitInfo, MapSize mapSize);
+    Cell[][] getMapPrototype(EntryPointInfo exitInfo, MapSize mapSize);
 }
