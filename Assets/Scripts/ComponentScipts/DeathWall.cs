@@ -9,13 +9,13 @@ public class DeathWall : MonoBehaviour {
     private bool canMove = false;
 	// Use this for initialization
 	void Start () {
-        speed = speed == 0 ? 0.2f : speed;
-        moveVector = new Vector3(speed, 0, 0);
+        speed = speed == 0 ? 0.2f : speed; 
 	}
 
     // Update is called once per frame
     void Update()
     {
+        moveVector = new Vector3(speed, 0, 0);
         if (canMove == true)
             Move();
     }
