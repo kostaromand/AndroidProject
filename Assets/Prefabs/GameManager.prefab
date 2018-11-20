@@ -52,5 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MapObject: {fileID: 1666882751837564, guid: 8d5c5ecf174c4ac4181ffe1336395177, type: 2}
-  playerObject: {fileID: 1941770139302874, guid: 9b628088531a8254fa62f463af5c876c,
-    type: 2}
+  playerObject: {fileID: 0}

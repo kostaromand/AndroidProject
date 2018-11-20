@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    int speed = 6;
+    float speed = 5;
     CameraController cam;
     Rigidbody2D _rigidbody;
     Transform _transform;
@@ -28,6 +28,10 @@ public class Player : MonoBehaviour
         Move();
     }
 
+    public void ChangeSpeed(float scale)
+    {
+        speed += scale;
+    }
     void Move()
     {
         if (moveTargetState == MoveTargetState.Old && Vector3.Magnitude(oldPosition - MoveTarget) < Vector3.Magnitude(_transform.position - MoveTarget))
