@@ -35,16 +35,18 @@ public class MapManager : MonoBehaviour
         GameObject newMap = Instantiate(MapObject, startVector, Quaternion.identity, transform);
         MapSize mapSize = new MapSize(defaultMapSize.Horizontal, defaultMapSize.Vertical);
         EntryPointInfo entryPointInfo;
+        int startPos;
+        int endPos;
         if (lastMap == null)
         {
-            int startPos = Random.Range(0, mapSize.Horizontal + 1);
-            int endPos = Random.Range(0, mapSize.Horizontal + 1);
-            entryPointInfo = new EntryPointInfo(startPos, endPos);
+            startPos = Random.Range(0, mapSize.Horizontal + 1);
         }
         else
         {
-            entryPointInfo = lastMap.ExitInfo;
+            startPos = lastMap.entryPointInfo.rightPoint;
         }
+        endPos = Random.Range(0, mapSize.Horizontal + 1);
+        entryPointInfo = new EntryPointInfo(startPos, endPos);
         MapController mapController = newMap.GetComponent<MapController>();
         lastMap = mapController.CreateMap(entryPointInfo, mapSize, generator);
         startVector += new Vector2(lastMap.Width, 0);

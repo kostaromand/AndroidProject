@@ -37,7 +37,7 @@ public class MapController : MonoBehaviour
                 Instantiate(gameObject, new Vector3(x + i * SpriteSize.x, y + j * SpriteSize.y), Quaternion.identity, transform);
             }
         }
-        MapInfo.ExitInfo = entryPointInfo;
+        MapInfo.entryPointInfo = entryPointInfo;
         MapInfo.MapSize = mapSize;
         MapInfo.Width = mapSize.Horizontal * SpriteSize.x;
         MapInfo.Height = mapSize.Vertical * SpriteSize.y;
