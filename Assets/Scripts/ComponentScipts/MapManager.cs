@@ -5,8 +5,9 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public GameObject MapObject;
-    public GameObject playerObject;
+    DeathWall deathWall;
     Player player;
+    List<Map> Maps;
     Map lastMap;
     Vector2 startVector;
     MapSize defaultMapSize = new MapSize(16, 10);
@@ -14,9 +15,11 @@ public class MapManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Maps = new List<Map>();
         startVector = transform.position;
         generator = new BasicMapGenerator(); //<----------------- Здесь меняем генератор
-        player = playerObject.GetComponent<Player>();
+        player = FindObjectOfType<Player>();
+        deathWall = FindObjectOfType<DeathWall>();
         AddNewMap();
     }
 
@@ -29,7 +32,15 @@ public class MapManager : MonoBehaviour
             if (player.transform.position.x > startX)
                 AddNewMap();
         }
+        DestroyMapByDeathWall();
     }
+
+    void DestroyMapByDeathWall()
+    {
+        float wallCoordX = deathWall.transform.position.x;
+        Maps.FindAll(x => x.transform.position.x + x.Width < wallCoordX).ForEach(x => { Destroy(x.gameObject); Maps.Remove(x);Debug.Log("Destroyed"); });
+    }
+
     public void AddNewMap()
     {
         GameObject newMap = Instantiate(MapObject, startVector, Quaternion.identity, transform);
@@ -49,6 +60,7 @@ public class MapManager : MonoBehaviour
         entryPointInfo = new EntryPointInfo(startPos, endPos);
         MapController mapController = newMap.GetComponent<MapController>();
         lastMap = mapController.CreateMap(entryPointInfo, mapSize, generator);
+        Maps.Add(lastMap);
         startVector += new Vector2(lastMap.Width, 0);
     }
 }

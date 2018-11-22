@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
     Camera cam;
     float leftSide = 200;
     float rightSide;
