@@ -6,7 +6,7 @@ public class MapManager : MonoBehaviour
 {
     public GameObject MapObject;
     public GameObject playerObject;
-    private Player player;
+    Player player;
     Map lastMap;
     Vector2 startVector;
     MapSize defaultMapSize = new MapSize(16, 10);

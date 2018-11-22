@@ -1,0 +1,9 @@
+1.В файле Assets/Scripts/TunnelGenerator.cs запилить скрипт генерации туннеля
+Ддя проверки работы, поменять в классе Assets/Scripts/MapManager
+generator = new BasicMapGenerator()
+на 
+generator = new TunnelGenerator()
+
+2. Создать сцену главного меню с кнопками из требований
+
+3. Создать Pause Menu на игровой сцене(GameScene)
