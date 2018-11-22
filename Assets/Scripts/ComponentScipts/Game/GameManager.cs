@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -18,5 +17,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GameOver");
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = Time.timeScale == 1 ? 0 : 1;
     }
 }

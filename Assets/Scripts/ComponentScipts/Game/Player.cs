@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
 {
 
     float speed = 5;
-    CameraController cam;
     Rigidbody2D _rigidbody;
     Transform _transform;
     public Vector3 MoveTarget;
@@ -15,7 +14,6 @@ public class Player : MonoBehaviour
     MoveTargetState moveTargetState = MoveTargetState.Old;
     void Start()
     {
-        cam = Camera.main.GetComponent<CameraController>();
         _transform = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.freezeRotation = true;
@@ -28,9 +26,9 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    public void ChangeSpeed(float scale)
+    public void ChangeSpeed(float value)
     {
-        speed += scale;
+        speed += value;
     }
     void Move()
     {
@@ -46,7 +44,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Idle()
+    public void Idle()
     {
         _rigidbody.velocity = Vector3.zero;
     }

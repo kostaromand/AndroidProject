@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     CameraController cameraController;
     void Start () {
         player = GetComponent<Player>();
+        pause = FindObjectOfType<Pause>();
         _camera = Camera.main;
         cameraController = _camera.GetComponent<CameraController>();
     }
@@ -21,7 +22,11 @@ public class PlayerController : MonoBehaviour {
         {
             Vector3 ScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
             Vector3 worldPoint = _camera.ScreenToWorldPoint(ScreenPoint);
-            player.goToPoint(worldPoint);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero, 1);
+            if (hit.collider == null||hit.collider.tag!="UI")
+            {
+                player.goToPoint(worldPoint);
+            }
         }
     }
 

@@ -6,6 +6,7 @@ public class DeathWallController : MonoBehaviour
 {
     DeathWall wall;
     GameManager gameManager;
+    float maxSpeed = 4;
     // Use this for initialization
     void Start()
     {
@@ -20,11 +21,11 @@ public class DeathWallController : MonoBehaviour
     }
     public void IncreaseSpeed(float value)
     {
-        if(wall.speed<4)
+        if(wall.speed< maxSpeed)
         {
-            if(wall.speed+ value>4)
+            if(wall.speed+ value> maxSpeed)
             {
-                wall.speed = 4;
+                wall.speed = maxSpeed;
             }
             else
                 wall.IncreaseSpeed(value);

@@ -23,7 +23,6 @@ public class DeaWallManager : MonoBehaviour {
         gameObject.AddComponent<Timer>().StartTimer(incSpeedTime, true, func);
     }
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () {	
 	}
 }

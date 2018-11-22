@@ -6,11 +6,10 @@ public class MapController : MonoBehaviour
 {
     public GameObject[] Cells;
     public Map MapInfo { get; private set; }
-    public Vector2 SpriteSize;
+    public static Vector2 SpriteSize = new Vector2(1, 1);
     // Use this for initialization
     void Awake()
     {
-        SpriteSize = new Vector2(1, 1);
         MapInfo = gameObject.GetComponent<Map>();
     }
 
