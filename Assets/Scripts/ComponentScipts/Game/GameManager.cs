@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool Paused { get; private set; }
     // Use this for initialization
     void Start()
     {
+        Paused = false;
     }
 
     // Update is called once per frame
@@ -20,6 +22,12 @@ public class GameManager : MonoBehaviour
     }
     public void PauseGame()
     {
-        Time.timeScale = Time.timeScale == 1 ? 0 : 1;
+        Paused = true;
+        Time.timeScale = 0;
+    }
+    public void Resume()
+    {
+        Paused = false;
+        Time.timeScale = 1;
     }
 }

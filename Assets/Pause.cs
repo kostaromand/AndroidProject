@@ -2,21 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pause : MonoBehaviour {
+public class Pause : MonoBehaviour
+{
 
     GameManager gameManager;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         gameManager = FindObjectOfType<GameManager>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     private void OnMouseUpAsButton()
     {
-        gameManager.PauseGame();
+        if (gameManager.Paused == false)
+            gameManager.PauseGame();
+        else
+            gameManager.Resume();
     }
 }
