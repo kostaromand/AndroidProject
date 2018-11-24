@@ -12,6 +12,6 @@ public class Exit : MonoBehaviour {
     }
     private void OnMouseUpAsButton()
     {
-        gameManager.Exit ();
+        gameManager.Exit();
     }
 }

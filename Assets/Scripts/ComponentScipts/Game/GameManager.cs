@@ -1,43 +1,61 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public bool Paused { get; private set; }
-    public Menu menu;
-    public PauseButton pauseButton;
+    public static bool Paused { get; private set; }
+    public Menu InGameMenu;
+    public PauseButton PauseButton;
+    public Score score;
+    public Text GameOverScore;
     // Use this for initialization
     void Start()
     {
-        Paused = false;
+        setPause(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    public void GameOver()
-    {
-        Debug.Log("GameOver");
-    }
     public void Exit()
     {
-
+        SaveScore();
+        SceneManager.LoadScene("MainMenuScene", LoadSceneMode.Single);
+        Debug.Log("Exit");
     }
+
+    void SaveScore()
+    {
+        float maxScore = PlayerPrefs.GetInt("MaxScore", 0);
+        if (maxScore < score.CurrentScore)
+            PlayerPrefs.SetInt("MaxScore", score.CurrentScore);
+        PlayerPrefs.SetInt("CurrentScore", score.CurrentScore);
+    }
+
     public void PauseGame()
     {
-        Paused = true;
-        menu.OpenMenu();
-        pauseButton.HideButton();
-        Time.timeScale = 0;
+        setPause(true);
+        InGameMenu.OpenMenu();
+        PauseButton.HideButton();
     }
     public void Resume()
     {
-        Paused = false;
-        menu.CloseMenu();
-        pauseButton.ShowButton();
-        Time.timeScale = 1;
+        setPause(false);
+        InGameMenu.CloseMenu();
+        PauseButton.ShowButton();
+    }
+
+    void setPause(bool value)
+    {
+        if (value == true)
+        {
+            Paused = true;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Paused = false;
+            Time.timeScale = 1;
+        }
     }
 }
