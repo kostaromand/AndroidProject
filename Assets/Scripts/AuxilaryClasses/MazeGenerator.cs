@@ -24,12 +24,19 @@ class MazeGenerator : IMapGenerator
 
     }
 
+    private int DOWNCHANCES = 35;
+    private int RIGHTCHANCES = 50;
+
     public Cell[][] getMapPrototype(EntryPointInfo exitInfo, MapSize mapSize)
     {
         int width = mapSize.Horizontal;
         int height = mapSize.Vertical;
-        MazeCell[][] mazeCells = MazeCellsGenerator((mapSize.Vertical - 1) / 2, (mapSize.Horizontal - 1) / 2);
-        Cell[][] Map = MapFromMaze(mazeCells, width, height);
+        //MazeCell[][] mazeCells = MazeCellsGenerator((int)Math.Floor((mapSize.Vertical - 1.0) / 2.0), (int)Math.Floor((mapSize.Horizontal - 1.0) / 2.0));
+        //Cell[][] Map = MapFromMaze(mazeCells, width, height);
+        MazeCell[][] mazeCells = MazeCellsGenerator( (int)Math.Floor((mapSize.Horizontal - 1.0) / 2.0), (int)Math.Floor((mapSize.Vertical - 1.0) / 2.0));
+        Cell[][] Map = MapFromMaze(mazeCells, height, width);
+        Map[0][exitInfo.leftPoint] = new Cell(CellType.Road);
+        Map[width - 1][exitInfo.rightPoint] = new Cell(CellType.Road);
         return Map;
     }
     private Cell[][] MapFromMaze(MazeCell[][] _mazeCells, int _width, int _height)
@@ -40,6 +47,10 @@ class MazeGenerator : IMapGenerator
         int mazeWidth = (width - 1) / 2;
         MazeCell[][] mazeCells = _mazeCells;
         Cell[][] Map = new Cell[height][];
+        for (int i = 0; i < height; i++)
+        {
+            Map[i] = new Cell[width];
+        }
         for (int i = 0; i < mazeheight; i++)
         {
             for (int g = 0; g < mazeWidth; g++)
@@ -52,13 +63,33 @@ class MazeGenerator : IMapGenerator
         }
         for (int i = 0; i < height; i++)
         {
-            Map[0][i] = new Cell(CellType.Wall);
+            Map[i][0] = new Cell(CellType.Wall);
         }
         for (int i = 0; i < width; i++)
         {
-            Map[i][0] = new Cell(CellType.Wall);
+            Map[0][i] = new Cell(CellType.Wall);
         }
-        return null;
+        //Map = Transp(Map,width,height);
+        return Map;
+    }
+
+    private Cell[][] Transp(Cell[][] Map, int _width, int _height)
+    {
+        int width = _width;
+        int height = _height;
+        Cell[][] TranspMap = new Cell[width][];
+        for (int i = 0; i < width; i++)
+        {
+            TranspMap[i] = new Cell[height];
+        }
+        for (int i = 0; i < width; i++)
+        {
+            for (int g = 0; g < height; g++)
+            {
+                TranspMap[i][g] = Map[g][i];
+            }
+        }
+        return TranspMap;
     }
 
     private MazeCell[][] MazeCellsGenerator(int _height, int _width)
@@ -67,12 +98,14 @@ class MazeGenerator : IMapGenerator
         int width = _width;
         int level = 1;
         MazeCell[][] mazeCells = new MazeCell[height][];
-        MazeCell[] currentMazeCells = new MazeCell[width];
         Random random = new Random();
         for (int i = 0; i < height; i++)
         {
-            MazeCell[] newMazeCell = new MazeCell[width];
-            for (int g = 0; g < currentMazeCells.Length; g++)
+            mazeCells[i] = new MazeCell[width];
+        }
+        for (int i = 0; i < height; i++)
+        {
+            for (int g = 0; g < mazeCells[i].Length; g++)
             {
                 if (mazeCells[i][g] == null)
                 {
@@ -81,9 +114,10 @@ class MazeGenerator : IMapGenerator
             }
             for (int g = 0; g < mazeCells[i].Length - 1; g++)
             {
-                if (mazeCells[i][g] != mazeCells[i][g + 1])//Возможно как внизу условие переделать
+                if (mazeCells[i][g].value != mazeCells[i][g + 1].value)
                 {
-                    if (random.Next(100) < 50)
+                    int randValue = random.Next(100);
+                    if (randValue < RIGHTCHANCES)
                     {
                         int value = Math.Min(mazeCells[i][g].value, mazeCells[i][g + 1].value);
                         mazeCells[i][g].value = value;
@@ -97,9 +131,9 @@ class MazeGenerator : IMapGenerator
                 for (int g = 0; g < mazeCells[i].Length - 1; g++)
                 {
                     bool down = false;
-                    while (g < mazeCells[i].Length - 1 && mazeCells[i][g] == mazeCells[i][g + 1])
+                    while (g < mazeCells[i].Length - 1 && mazeCells[i][g].value == mazeCells[i][g + 1].value)
                     {
-                        if (random.Next(100) < 50)
+                        if (random.Next(100) < DOWNCHANCES)
                         {
                             if (!down)
                                 down = !down;
@@ -107,13 +141,28 @@ class MazeGenerator : IMapGenerator
                         }
                         g++;
                     }
-                    if (!down)
+                    if (!down || (down && random.Next(100) < DOWNCHANCES))
                         mazeCells[i][g].Down = true;
+                    if(!mazeCells[i][g].Down && !mazeCells[i][g].Right)
+                    {
+                        int e = 3;
+                    }
                 }
                 for (int g = 0; g < mazeCells[i].Length; g++)
                 {
                     if (mazeCells[i][g].Down)
                         mazeCells[i + 1][g] = new MazeCell(mazeCells[i][g].value);
+                }
+            }
+            else
+            {
+                int value = mazeCells[i][0].value;
+                mazeCells[i][mazeCells[i].Length-1].value=value;
+                mazeCells[i][mazeCells[i].Length - 1].Right = false;
+                for (int g = 0; g < mazeCells[i].Length-1; g++)
+                {
+                    mazeCells[i][g].value = value;
+                    mazeCells[i][g].Right = true;
                 }
             }
         }
