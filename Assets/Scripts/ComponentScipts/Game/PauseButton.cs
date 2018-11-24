@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pause : MonoBehaviour
+public class PauseButton : MonoBehaviour
 {
 
     GameManager gameManager;
@@ -20,9 +20,14 @@ public class Pause : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        if (gameManager.Paused == false)
-            gameManager.PauseGame();
-        else
-            gameManager.Resume();
+        gameManager.PauseGame();
+    }
+    public void ShowButton()
+    {
+        gameObject.SetActive(true);
+    }
+    public void HideButton()
+    {
+        gameObject.SetActive(false);
     }
 }
