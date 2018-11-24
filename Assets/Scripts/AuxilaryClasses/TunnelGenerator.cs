@@ -13,7 +13,7 @@ class TunnelGenerator : IMapGenerator
     public Cell[][] getMapPrototype(EntryPointInfo pointInfo, MapSize mapSize)
     {
         /* туду:
-         * Нужно запилить лабиринт c точнами входа из pointInfo размерами из mapSize
+         * Нужно запилить лабиринт c точками входа из pointInfo размерами из mapSize
          */
         throw new NotImplementedException();
     }
