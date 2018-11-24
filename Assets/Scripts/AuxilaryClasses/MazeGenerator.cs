@@ -24,8 +24,8 @@ class MazeGenerator : IMapGenerator
 
     }
 
-    private int DOWNCHANCES = 60;
-    private int RIGHTCHANCES = 60;
+    private int DOWNCHANCES = 25;
+    private int RIGHTCHANCES = 35;
 
     public Cell[][] getMapPrototype(EntryPointInfo exitInfo, MapSize mapSize)
     {
@@ -101,10 +101,6 @@ class MazeGenerator : IMapGenerator
                 Map[i * 2 + 1][g * 2 + 2] = new Cell(mazeCells[i][g].Right ? CellType.Road : CellType.Wall);
                 Map[i * 2 + 2][g * 2 + 1] = new Cell(mazeCells[i][g].Down ? CellType.Road : CellType.Wall);
                 Map[i * 2 + 2][g * 2 + 2] = new Cell(CellType.Wall);
-                if (!mazeCells[i][g].Down && !mazeCells[i][g].Right)
-                {
-                    int e = 3;
-                }
             }
         }
         for (int i = 0; i < height; i++)
@@ -189,10 +185,6 @@ class MazeGenerator : IMapGenerator
                     }
                     if (!down)
                         mazeCells[i][g].Down = true;
-                    if(!mazeCells[i][g].Down && !mazeCells[i][g].Right)
-                    {
-                        int e = 3;
-                    }
                 }
                 for (int g = 0; g < mazeCells[i].Length; g++)
                 {

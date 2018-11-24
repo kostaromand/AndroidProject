@@ -586,6 +586,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1941770139302874, guid: 9b628088531a8254fa62f463af5c876c,
     type: 2}
   m_PrefabInternal: {fileID: 1748819466}
+--- !u!251 &703060535
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703060534}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 360
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &811055026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1728335202706354, guid: fcc9eb1ad328706489c71cf9924e073d,
@@ -1061,11 +1079,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.093
       objectReference: {fileID: 0}
     - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.093
       objectReference: {fileID: 0}
     - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1090,6 +1108,28 @@ Prefab:
     - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.815
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.815
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.815
+      objectReference: {fileID: 0}
+    - target: {fileID: 70007193984930876, guid: 9b628088531a8254fa62f463af5c876c,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 70007193984930876, guid: 9b628088531a8254fa62f463af5c876c,
+        type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
