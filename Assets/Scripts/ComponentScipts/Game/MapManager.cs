@@ -10,7 +10,7 @@ public class MapManager : MonoBehaviour
     List<Map> Maps;
     Map lastMap;
     Vector2 startVector;
-    MapSize defaultMapSize = new MapSize(16, 10);
+    MapSize defaultMapSize = new MapSize(17, 11);
     IMapGenerator generator;
     // Use this for initialization
     void Start()

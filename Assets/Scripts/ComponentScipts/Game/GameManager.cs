@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool Paused { get; private set; }
+    public Menu menu;
+    public PauseButton pauseButton;
     // Use this for initialization
     void Start()
     {
@@ -20,14 +22,22 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameOver");
     }
+    public void Exit()
+    {
+
+    }
     public void PauseGame()
     {
         Paused = true;
+        menu.OpenMenu();
+        pauseButton.HideButton();
         Time.timeScale = 0;
     }
     public void Resume()
     {
         Paused = false;
+        menu.CloseMenu();
+        pauseButton.ShowButton();
         Time.timeScale = 1;
     }
 }
