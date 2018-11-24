@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    Text TextField;
+    Text TextField; 
     private float _score;
     public int CurrentScore { get { return Mathf.RoundToInt(_score); } private set { } }
     float scorePerSecond;
