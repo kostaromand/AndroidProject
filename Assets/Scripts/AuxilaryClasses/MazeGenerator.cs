@@ -24,8 +24,8 @@ class MazeGenerator : IMapGenerator
 
     }
 
-    private int DOWNCHANCES = 35;
-    private int RIGHTCHANCES = 50;
+    private int DOWNCHANCES = 60;
+    private int RIGHTCHANCES = 60;
 
     public Cell[][] getMapPrototype(EntryPointInfo exitInfo, MapSize mapSize)
     {
@@ -37,8 +37,50 @@ class MazeGenerator : IMapGenerator
         Cell[][] Map = MapFromMaze(mazeCells, height, width);
         Map[0][exitInfo.leftPoint] = new Cell(CellType.Road);
         Map[width - 1][exitInfo.rightPoint] = new Cell(CellType.Road);
+        Map = FindTheWay(Map, height, width,exitInfo.leftPoint);
         return Map;
     }
+
+    private Cell[][] FindTheWay(Cell[][] Map,int _height,int _width,int input)
+    {
+        int res = 0;
+        if (Map[1][input].Type==CellType.Road)
+        {
+            return Map;
+        }
+        else
+        {
+            for(int i = 1; i < _height / 2; i++)
+            {
+                if (input + i < _height && Map[1][input + i].Type == CellType.Road)
+                {
+                    res = i;
+                    break;
+                }
+                if(input - i >= 0 && Map[1][input- i].Type == CellType.Road)
+                {
+                    res = -i;
+                    break;
+                }
+            }
+        }
+        if (res > 0)
+        {
+            for (int i = res; i >= 0; i--)
+            {
+                Map[0][input + i] = new Cell(CellType.Road);
+            }
+        }
+        else
+        {
+            for (int i = res; i <= 0; i++)
+            {
+                Map[0][input + i] = new Cell(CellType.Road);
+            }
+        }
+        return Map;
+    }
+
     private Cell[][] MapFromMaze(MazeCell[][] _mazeCells, int _width, int _height)
     {
         int width = _width;
@@ -59,6 +101,10 @@ class MazeGenerator : IMapGenerator
                 Map[i * 2 + 1][g * 2 + 2] = new Cell(mazeCells[i][g].Right ? CellType.Road : CellType.Wall);
                 Map[i * 2 + 2][g * 2 + 1] = new Cell(mazeCells[i][g].Down ? CellType.Road : CellType.Wall);
                 Map[i * 2 + 2][g * 2 + 2] = new Cell(CellType.Wall);
+                if (!mazeCells[i][g].Down && !mazeCells[i][g].Right)
+                {
+                    int e = 3;
+                }
             }
         }
         for (int i = 0; i < height; i++)
@@ -128,7 +174,7 @@ class MazeGenerator : IMapGenerator
             }
             if (i != height - 1)
             {//Если не последняя строчка
-                for (int g = 0; g < mazeCells[i].Length - 1; g++)
+                for (int g = 0; g < mazeCells[i].Length; g++)
                 {
                     bool down = false;
                     while (g < mazeCells[i].Length - 1 && mazeCells[i][g].value == mazeCells[i][g + 1].value)
@@ -141,7 +187,7 @@ class MazeGenerator : IMapGenerator
                         }
                         g++;
                     }
-                    if (!down || (down && random.Next(100) < DOWNCHANCES))
+                    if (!down)
                         mazeCells[i][g].Down = true;
                     if(!mazeCells[i][g].Down && !mazeCells[i][g].Right)
                     {

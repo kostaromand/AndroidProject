@@ -50,13 +50,13 @@ public class MapManager : MonoBehaviour
         int endPos;
         if (lastMap == null)
         {
-            startPos = Random.Range(1, mapSize.Vertical);
+            startPos = Random.Range(2, mapSize.Vertical-1);
         }
         else
         {
             startPos = lastMap.entryPointInfo.rightPoint;
         }
-        endPos = Random.Range(1, mapSize.Vertical);
+        endPos = Random.Range(2, mapSize.Vertical-1);
         entryPointInfo = new EntryPointInfo(startPos, endPos);
         MapController mapController = newMap.GetComponent<MapController>();
         lastMap = mapController.CreateMap(entryPointInfo, mapSize, generator);
