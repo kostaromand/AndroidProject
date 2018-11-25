@@ -10,7 +10,7 @@ public class Exit : MonoBehaviour {
     {
         gameManager = FindObjectOfType<GameManager>();
     }
-    private void OnMouseUpAsButton()
+    public void ExitFromGame()
     {
         gameManager.Exit();
     }
