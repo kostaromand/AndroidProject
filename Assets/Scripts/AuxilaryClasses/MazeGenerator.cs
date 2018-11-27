@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+//using UnityEngine;
 
 
 
@@ -10,7 +11,7 @@ class MazeGenerator : IMapGenerator
     private class MazeCell
     {
         public bool Down = false;
-        public bool Right = false;
+        public bool Right = true;
         public int value = 0;
         public MazeCell(int level)
         {
@@ -24,8 +25,8 @@ class MazeGenerator : IMapGenerator
 
     }
 
-    private int DOWNCHANCES = 60;
-    private int RIGHTCHANCES = 60;
+    private int DOWNCHANCES = 50;
+    private int RIGHTCHANCES = 50;
 
     public Cell[][] getMapPrototype(EntryPointInfo exitInfo, MapSize mapSize)
     {
@@ -101,10 +102,6 @@ class MazeGenerator : IMapGenerator
                 Map[i * 2 + 1][g * 2 + 2] = new Cell(mazeCells[i][g].Right ? CellType.Road : CellType.Wall);
                 Map[i * 2 + 2][g * 2 + 1] = new Cell(mazeCells[i][g].Down ? CellType.Road : CellType.Wall);
                 Map[i * 2 + 2][g * 2 + 2] = new Cell(CellType.Wall);
-                if (!mazeCells[i][g].Down && !mazeCells[i][g].Right)
-                {
-                    int e = 3;
-                }
             }
         }
         for (int i = 0; i < height; i++)
@@ -144,7 +141,6 @@ class MazeGenerator : IMapGenerator
         int width = _width;
         int level = 1;
         MazeCell[][] mazeCells = new MazeCell[height][];
-        Random random = new Random();
         for (int i = 0; i < height; i++)
         {
             mazeCells[i] = new MazeCell[width];
@@ -162,15 +158,33 @@ class MazeGenerator : IMapGenerator
             {
                 if (mazeCells[i][g].value != mazeCells[i][g + 1].value)
                 {
-                    int randValue = random.Next(100);
+                    int randValue = UnityEngine.Random.Range(0,100);
                     if (randValue < RIGHTCHANCES)
                     {
                         int value = Math.Min(mazeCells[i][g].value, mazeCells[i][g + 1].value);
                         mazeCells[i][g].value = value;
                         mazeCells[i][g + 1].value = value;
-                        mazeCells[i][g].Right = true;
+                        
+                    }
+                    else
+                    {
+                        mazeCells[i][g].Right = false;
                     }
                 }
+                else
+                {
+                    mazeCells[i][g].Right = false;
+                }
+            }
+            for (int g = 0; g < mazeCells[i].Length; g++)
+            {
+                int value = mazeCells[i][g].value;
+                while (g<mazeCells[i].Length && mazeCells[i][g].Right){
+                    mazeCells[i][g].value = value;
+                    g++;
+                }
+                if(g!=mazeCells[i].Length)
+                    mazeCells[i][g].value = value;
             }
             if (i != height - 1)
             {//Если не последняя строчка
@@ -179,7 +193,7 @@ class MazeGenerator : IMapGenerator
                     bool down = false;
                     while (g < mazeCells[i].Length - 1 && mazeCells[i][g].value == mazeCells[i][g + 1].value)
                     {
-                        if (random.Next(100) < DOWNCHANCES)
+                        if (UnityEngine.Random.Range(0, 100) < DOWNCHANCES)
                         {
                             if (!down)
                                 down = !down;
@@ -187,12 +201,8 @@ class MazeGenerator : IMapGenerator
                         }
                         g++;
                     }
-                    if (!down)
+                    if (!down || (down && UnityEngine.Random.Range(0, 100) < DOWNCHANCES))
                         mazeCells[i][g].Down = true;
-                    if(!mazeCells[i][g].Down && !mazeCells[i][g].Right)
-                    {
-                        int e = 3;
-                    }
                 }
                 for (int g = 0; g < mazeCells[i].Length; g++)
                 {
@@ -203,14 +213,20 @@ class MazeGenerator : IMapGenerator
             else
             {
                 int value = mazeCells[i][0].value;
-                mazeCells[i][mazeCells[i].Length-1].value=value;
-                mazeCells[i][mazeCells[i].Length - 1].Right = false;
                 for (int g = 0; g < mazeCells[i].Length-1; g++)
                 {
-                    mazeCells[i][g].value = value;
-                    mazeCells[i][g].Right = true;
+                    if (mazeCells[i][g].value != mazeCells[i][g + 1].value)
+                    {
+                        mazeCells[i][g].Right = true;
+                    }
+                    mazeCells[i][g].Down = false;
                 }
             }
+
+        }
+        for (int i = 0; i < height; i++)
+        {
+            mazeCells[i][width-1].Right = false;
         }
         return mazeCells;
     }
