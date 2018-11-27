@@ -32,7 +32,7 @@ public class MapController : MonoBehaviour
         {
             for (int j = 0; j < mapSize.Vertical; j++)
             {
-                GameObject gameObject = Cells.First(g => g.name == MapPrototype[i][j].getTypeName());
+                GameObject gameObject = Cells.First(g => g.name == MapPrototype[i,j].getTypeName());
                 Instantiate(gameObject, new Vector3(x + i * SpriteSize.x, y + j * SpriteSize.y), Quaternion.identity, transform);
             }
         }

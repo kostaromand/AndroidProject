@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class BasicMapGenerator : IMapGenerator
+public class BasicMapGenerator
 {
     public BasicMapGenerator() { }
 
