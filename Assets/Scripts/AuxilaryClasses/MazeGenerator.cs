@@ -134,7 +134,7 @@ class MazeGenerator : IMapGenerator
                         int value = Math.Min(mazeCells[i,g].value, mazeCells[i,g + 1].value);
                         mazeCells[i,g].value = value;
                         mazeCells[i,g + 1].value = value;
-                        
+
                     }
                     else
                     {
@@ -201,4 +201,3 @@ class MazeGenerator : IMapGenerator
         return mazeCells;
     }
 }
-

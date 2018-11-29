@@ -11,14 +11,7 @@ public class PauseButton : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnMouseUpAsButton()
+    public void Pause()
     {
         gameManager.PauseGame();
     }

@@ -35,14 +35,14 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         setPause(true);
-        InGameMenu.OpenMenu();
         PauseButton.HideButton();
+        InGameMenu.OpenMenu();
     }
     public void Resume()
     {
         setPause(false);
-        InGameMenu.CloseMenu();
         PauseButton.ShowButton();
+        InGameMenu.CloseMenu();
     }
 
     void setPause(bool value)

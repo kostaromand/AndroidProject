@@ -11,7 +11,7 @@ public class Resume : MonoBehaviour {
     {
         gameManager = FindObjectOfType<GameManager>();
     }
-    private void OnMouseUpAsButton()
+    public void ResumeGame()
     {
         gameManager.Resume();
     }
