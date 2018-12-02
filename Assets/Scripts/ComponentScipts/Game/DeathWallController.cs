@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeathWallController : MonoBehaviour
 {
     GameManager gameManager;
-    float maxSpeed = 4;
+    float maxSpeed = 2.3f;
     public float speed = 0;
     private bool canMove = false;
     // Use this for initialization
@@ -17,7 +17,8 @@ public class DeathWallController : MonoBehaviour
 
     private void Update()
     {
-        transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
+        if (canMove)
+            transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
     }
 
     public void AllowMove()

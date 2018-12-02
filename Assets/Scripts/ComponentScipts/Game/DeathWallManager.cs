@@ -7,9 +7,9 @@ public class DeathWallManager : MonoBehaviour {
     DeathWallController deathWallController;
     Timer startMoveTimer;
     Timer increaseSpeedTimer;
-    public float startMoveTime = 5;
+    public float startMoveTime = 2;
     public float incSpeedTime = 5;
-    public float incSpeedValue = 0.3f; 
+    public float incSpeedValue = 0.1f; 
 	// Use this for initialization
 	void Start () {
         deathWallController = FindObjectOfType<DeathWallController>();

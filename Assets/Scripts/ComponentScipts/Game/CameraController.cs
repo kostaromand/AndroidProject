@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        leftSide = Screen.width/10 * 2;
+        leftSide = Screen.width/10 * 3;
         rightSide = Screen.width - leftSide;
         cam = GetComponent<Camera>();
         coorY = transform.position.y;
