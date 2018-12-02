@@ -13,6 +13,8 @@ public class DeathWallManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         deathWallController = FindObjectOfType<DeathWallController>();
+        var leftSide = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height / 2, 0));
+        deathWallController.transform.position = leftSide -new Vector3(deathWallController.GetComponent<BoxCollider2D>().bounds.size.x / 2, 0,leftSide.z);
         InitiateTimers();
     }
 

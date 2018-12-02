@@ -5,15 +5,15 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     Camera cam;
-    float leftSide = 200;
+    float leftSide;
     float rightSide;
     float screenWidth;
     float coorY;
     // Use this for initialization
     void Start()
     {
-        screenWidth = Screen.width;
-        rightSide = screenWidth - leftSide;
+        leftSide = Screen.width/10 * 2;
+        rightSide = Screen.width - leftSide;
         cam = GetComponent<Camera>();
         coorY = transform.position.y;
     }
