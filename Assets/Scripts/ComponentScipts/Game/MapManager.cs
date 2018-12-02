@@ -5,8 +5,8 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public GameObject MapObject;
-    DeathWall deathWall;
-    Player player;
+    DeathWallController deathWall;
+    PlayerController player;
     List<Map> Maps;
     Map lastMap;
     Vector2 startVector;
@@ -18,8 +18,8 @@ public class MapManager : MonoBehaviour
         Maps = new List<Map>();
         startVector = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)) + ((Vector3)MapController.SpriteSize / 2);
         generator = new MazeGenerator(); //<----------------- Здесь меняем генератор
-        player = FindObjectOfType<Player>();
-        deathWall = FindObjectOfType<DeathWall>();
+        player = FindObjectOfType<PlayerController>();
+        deathWall = FindObjectOfType<DeathWallController>();
         AddNewMap();
     }
 

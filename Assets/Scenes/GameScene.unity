@@ -1062,7 +1062,7 @@ Transform:
   m_GameObject: {fileID: 956227149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.16662936, y: 0.14588235, z: 0}
-  m_LocalScale: {x: 1.7917135, y: 1.5686275, z: 1.2269938}
+  m_LocalScale: {x: 1.791713, y: 1.568627, z: 0}
   m_Children: []
   m_Father: {fileID: 703060541}
   m_RootOrder: 0
@@ -1575,7 +1575,18 @@ Prefab:
       propertyPath: Joystick
       value: 
       objectReference: {fileID: 924507328}
-    m_RemovedComponents: []
+    - target: {fileID: 50180163124179140, guid: 9b628088531a8254fa62f463af5c876c,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032755389215800, guid: 9b628088531a8254fa62f463af5c876c,
+        type: 2}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114543267578427720, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1898904848

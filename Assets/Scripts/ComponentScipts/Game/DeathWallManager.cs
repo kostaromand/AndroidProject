@@ -20,7 +20,7 @@ public class DeathWallManager : MonoBehaviour {
 
     void InitiateTimers()
     {
-        gameObject.AddComponent<Timer>().StartTimer(startMoveTime, false, deathWallController.allowMove);
+        gameObject.AddComponent<Timer>().StartTimer(startMoveTime, false, deathWallController.AllowMove);
         Timer.CastedFunction func = () => deathWallController.IncreaseSpeed(incSpeedValue);
         gameObject.AddComponent<Timer>().StartTimer(incSpeedTime, true, func);
     }

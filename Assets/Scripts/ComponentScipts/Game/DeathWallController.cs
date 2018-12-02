@@ -4,33 +4,39 @@ using UnityEngine;
 
 public class DeathWallController : MonoBehaviour
 {
-    DeathWall wall;
     GameManager gameManager;
     float maxSpeed = 4;
+    public float speed = 0;
+    private bool canMove = false;
     // Use this for initialization
     void Start()
     {
-        wall = GetComponent<DeathWall>();
+        DenyMove();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
-    
+
+    private void Update()
+    {
+        transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
+    }
+
+    public void AllowMove()
+    {
+        canMove = true;
+    }
+    public void DenyMove()
+    {
+        canMove = false;
+    }
 
     public void IncreaseSpeed(float value)
     {
-        if(wall.speed< maxSpeed)
+        if (speed + value > maxSpeed)
         {
-            if (wall.speed+ value> maxSpeed)
-            {
-                wall.speed = maxSpeed;
-            }
-            else
-                wall.IncreaseSpeed(value);
+            speed = maxSpeed;
         }
-            
-    }
-    public void allowMove()
-    {
-        wall.AllowMove();
+        else
+            speed += value;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,4 +46,5 @@ public class DeathWallController : MonoBehaviour
         }
     }
 }
+
 
