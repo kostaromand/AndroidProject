@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     private Player player;
     Camera _camera;
     CameraController cameraController;
+    public VirtualJoystick Joystick;
     void Start () {
         player = GetComponent<Player>();
         _camera = Camera.main;
@@ -16,20 +18,15 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        cameraController.Attach(transform, player.MoveTarget - transform.position);
-        if (GameManager.Paused)
-            player.Idle();
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 ScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-            Vector3 worldPoint = _camera.ScreenToWorldPoint(ScreenPoint);
-            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero, 1);
-            if (hit.collider == null||hit.collider.tag!="UI")
-            {
-                player.goToPoint(worldPoint);
-            }
-        }
+        var moveVector = getMoveVector();
+        transform.position = transform.position + moveVector * Time.deltaTime * player.speed;
+        cameraController.Attach(transform, moveVector);
     }
 
+    private Vector3 getMoveVector()
+    {
+        var dir = new Vector3(Joystick.Horizontal(), Joystick.Vertical());
+        return dir;
+    }
 }
     

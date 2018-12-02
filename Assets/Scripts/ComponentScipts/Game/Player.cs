@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    float speed = 5;
+    public float speed = 5;
     Rigidbody2D _rigidbody;
     Transform _transform;
     public Vector3 MoveTarget;
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        Move();
+        //Move();
     }
 
     public void ChangeSpeed(float value)
@@ -47,12 +47,6 @@ public class Player : MonoBehaviour
     public void Idle()
     {
         _rigidbody.velocity = Vector3.zero;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Idle();
-        Debug.Log("Collision");
     }
 
     public void goToPoint(Vector3 point)
