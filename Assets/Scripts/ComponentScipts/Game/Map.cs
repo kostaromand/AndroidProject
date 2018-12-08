@@ -6,4 +6,5 @@ public class Map : MonoBehaviour
     public MapSize MapSize { get; set; }
     public float Width { get;  set; }
     public float Height { get; set; }
+    public Cell[,] mapPrototype { get; set; }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpeedBoost : Item {
     PlayerController player;
-    float startSpeed;
     float duration = 5f;
     float bonusSpeed = 2f;
     private void Start()
@@ -14,7 +13,6 @@ public class SpeedBoost : Item {
     }
     protected override void CollideWithPlayer()
     {
-        startSpeed = player.speed;
         player.ChangeSpeed(bonusSpeed);
         player.gameObject.AddComponent<Timer>().StartTimer(duration, false, () => player.ChangeSpeed(-bonusSpeed));
         alive = false;

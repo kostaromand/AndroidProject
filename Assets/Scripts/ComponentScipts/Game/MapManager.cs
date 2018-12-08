@@ -17,10 +17,11 @@ public class MapManager : MonoBehaviour
     {
         Maps = new List<Map>();
         startVector = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)) + ((Vector3)MapController.SpriteSize / 2);
-        generator = new BasicMapGenerator(); //<----------------- Здесь меняем генератор
+        generator = new MazeGenerator(); //<----------------- Здесь меняем генератор
         player = FindObjectOfType<PlayerController>();
         deathWall = FindObjectOfType<DeathWallController>();
         AddNewMap();
+        LocatePlayer();
     }
 
     // Update is called once per frame
@@ -33,6 +34,19 @@ public class MapManager : MonoBehaviour
                 AddNewMap();
         }
         DestroyMapByDeathWall();
+    }
+
+    void LocatePlayer()
+    {
+        int x,y;
+        var map = Maps[0];
+        do
+        {
+            x = map.MapSize.Horizontal/2;
+            y = Random.Range(1, map.MapSize.Vertical);
+        }
+        while (map.mapPrototype[x,y].Type == CellType.Wall);
+        player.transform.position = new Vector3(map.transform.position.x + x, map.transform.position.y + y);
     }
 
     void DestroyMapByDeathWall()

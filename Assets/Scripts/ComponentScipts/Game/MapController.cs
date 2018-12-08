@@ -28,6 +28,7 @@ public class MapController : MonoBehaviour
             }
         }
         CreateItems(MapPrototype,mapSize);
+        MapInfo.mapPrototype = MapPrototype;
         MapInfo.entryPointInfo = entryPointInfo;
         MapInfo.MapSize = mapSize;
         MapInfo.Width = mapSize.Horizontal * SpriteSize.x;
