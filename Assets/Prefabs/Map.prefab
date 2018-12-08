@@ -55,6 +55,9 @@ MonoBehaviour:
   Cells:
   - {fileID: 1660868691310014, guid: 16eee8ec7bbc73646b1e942349c828ba, type: 2}
   - {fileID: 1526827313152410, guid: 5d28d2382fc18da45acf507145d9d748, type: 2}
+  Items:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114545064450748786
 MonoBehaviour:
   m_ObjectHideFlags: 1

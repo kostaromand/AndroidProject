@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public Menu InGameMenu;
     public PauseButton PauseButton;
     public Score score;
-    public Text GameOverScore;
     // Use this for initialization
     void Start()
     {

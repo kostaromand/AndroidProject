@@ -17,7 +17,7 @@ public class MapManager : MonoBehaviour
     {
         Maps = new List<Map>();
         startVector = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)) + ((Vector3)MapController.SpriteSize / 2);
-        generator = new MazeGenerator(); //<----------------- Здесь меняем генератор
+        generator = new BasicMapGenerator(); //<----------------- Здесь меняем генератор
         player = FindObjectOfType<PlayerController>();
         deathWall = FindObjectOfType<DeathWallController>();
         AddNewMap();

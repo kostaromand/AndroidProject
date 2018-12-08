@@ -5,22 +5,13 @@ using System.Linq;
 public class MapController : MonoBehaviour
 {
     public GameObject[] Cells;
+    public Item[] Items;
     public Map MapInfo { get; private set; }
     public static Vector2 SpriteSize = new Vector2(1, 1);
     // Use this for initialization
     void Awake()
     {
         MapInfo = gameObject.GetComponent<Map>();
-    }
-
-    void Start()
-    {
-
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public Map CreateMap(EntryPointInfo entryPointInfo, MapSize mapSize, IMapGenerator generator)

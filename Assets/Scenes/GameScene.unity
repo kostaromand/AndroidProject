@@ -955,7 +955,6 @@ MonoBehaviour:
   InGameMenu: {fileID: 407649388}
   PauseButton: {fileID: 1578190356}
   score: {fileID: 523423265}
-  GameOverScore: {fileID: 0}
 --- !u!1 &924507324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &956227150
 Transform:
   m_ObjectHideFlags: 0
