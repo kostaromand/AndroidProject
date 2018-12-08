@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedBoost : Item {
+public class FullVision : Item {
     PlayerController player;
-    float startSpeed;
     float duration = 5f;
-    float bonusSpeed = 2f;
     private void Start()
     {
+        itemType = ItemType.FullVision;
         player = FindObjectOfType<PlayerController>();
     }
     protected override void CollideWithPlayer()
     {
-        startSpeed = player.speed;
-        player.setSpeed(player.speed + bonusSpeed);
-        player.gameObject.AddComponent<Timer>().StartTimer(duration, false, () => player.setSpeed(startSpeed));
+        var smoke = player.transform.GetChild(0).gameObject;
+        smoke.SetActive(false);
+        player.gameObject.AddComponent<Timer>().StartTimer(duration, false, () => smoke.SetActive(true));
         alive = false;
     }
 }

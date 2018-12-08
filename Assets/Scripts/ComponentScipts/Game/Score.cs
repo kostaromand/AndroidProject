@@ -26,8 +26,8 @@ public class Score : MonoBehaviour
             TextField.text = CurrentScore.ToString();
         }
     }
-    public void AddScore()
+    public void AddScore(float value)
     {
-       
+        _score += value;
     }
 }

@@ -40,7 +40,7 @@ public class MapController : MonoBehaviour
         float x = transform.position.x;
         float y = transform.position.y;
         List<Item> createdItems = new List<Item>();
-        int maxAmountItems = Random.Range(0, 4);
+        int maxAmountItems = Random.Range(0, Items.Length);
         for (int i = 0; i < maxAmountItems; i++)
         {
             int ver = 0;
