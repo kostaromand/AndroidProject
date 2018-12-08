@@ -34,7 +34,6 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
             
             pos.x = (pos.x / bgImg.rectTransform.rect.size.x) - 0.5f;
             pos.y = (pos.y / bgImg.rectTransform.rect.size.y) + 0.5f;
-            Debug.Log(pos); 
             inputVector = new Vector3(pos.x * 2 + 1, pos.y * 2 - 1);
             inputVector = inputVector.magnitude > 1.0f ? inputVector.normalized : inputVector;
             joystickImg.rectTransform.anchoredPosition = new Vector3((inputVector.x) * (bgImg.rectTransform.rect.size.x / 3), inputVector.y * (bgImg.rectTransform.rect.size.y / 3));
