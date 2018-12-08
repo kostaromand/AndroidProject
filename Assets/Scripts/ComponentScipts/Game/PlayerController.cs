@@ -29,5 +29,10 @@ public class PlayerController : MonoBehaviour {
         var dir = new Vector3(Joystick.Horizontal(), Joystick.Vertical());
         return dir;
     }
+    public void setSpeed(float value)
+    {
+        if (value >= 0)
+            speed = value;
+    }
 }
     
