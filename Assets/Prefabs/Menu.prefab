@@ -38,7 +38,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4370491248027222}
   - component: {fileID: 212799012140956650}
-  - component: {fileID: 114024167939791284}
   - component: {fileID: 61195143596140244}
   m_Layer: 0
   m_Name: Resume
@@ -155,17 +154,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.95, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &114024167939791284
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1253730533291832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d99c143a557d5b4e9806808dedbbdb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114027947259089550
 MonoBehaviour:
   m_ObjectHideFlags: 1

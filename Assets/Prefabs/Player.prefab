@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4347249535761218}
   - component: {fileID: 50180163124179140}
   - component: {fileID: 212564142009752002}
-  - component: {fileID: 114543267578427720}
   - component: {fileID: 114032755389215800}
   - component: {fileID: 70007193984930876}
   m_Layer: 0
@@ -90,18 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c961449b7dd490499777a3491e699a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114543267578427720
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941770139302874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af9c3fd9acd0264bac0115d5d9d4393, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveTarget: {x: 0, y: 0, z: 0}
+  speed: 0
+  Joystick: {fileID: 0}
 --- !u!212 &212564142009752002
 SpriteRenderer:
   m_ObjectHideFlags: 1
