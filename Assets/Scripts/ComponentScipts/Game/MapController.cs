@@ -4,7 +4,8 @@ using UnityEngine;
 using System.Linq;
 public class MapController : MonoBehaviour
 {
-    public GameObject[] Cells;
+    public GameObject Background;
+    public GameObject[] Walls;
     public Item[] Items;
     public Map MapInfo { get; private set; }
     public static Vector2 SpriteSize = new Vector2(1, 1);
@@ -23,10 +24,15 @@ public class MapController : MonoBehaviour
         {
             for (int j = 0; j < mapSize.Vertical; j++)
             {
-                GameObject gameObject = Cells.First(g => g.name == MapPrototype[i,j].getTypeName());
-                Instantiate(gameObject, new Vector3(x + i * SpriteSize.x, y + j * SpriteSize.y), Quaternion.identity, transform);
+                string tag = MapPrototype[i, j].getTypeName();
+                if (tag == "Wall")
+                {
+                    var gameObject = (from wall in Walls where wall.tag == tag select wall).ToArray()[Random.Range(0, Walls.Length)];
+                    Instantiate(gameObject, new Vector3(x + i * SpriteSize.x, y + j * SpriteSize.y), Quaternion.identity, transform);
+                }
             }
         }
+        Instantiate(Background, new Vector3(x, 0), Quaternion.identity, transform);
         CreateItems(MapPrototype,mapSize);
         MapInfo.mapPrototype = MapPrototype;
         MapInfo.entryPointInfo = entryPointInfo;

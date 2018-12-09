@@ -52,9 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8155f745b79e74699ac606738ce31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cells:
-  - {fileID: 1660868691310014, guid: 16eee8ec7bbc73646b1e942349c828ba, type: 2}
-  - {fileID: 1526827313152410, guid: 5d28d2382fc18da45acf507145d9d748, type: 2}
+  Background: {fileID: 1811500327002578, guid: 04f40dbd01b03fb4496599d4b7f95499, type: 2}
+  Walls:
+  - {fileID: 1120651429533096, guid: 68a420ac85cc7e241b2fda3191984547, type: 2}
+  - {fileID: 1622790451527560, guid: f094e014672c8614b806282fd8ebbdad, type: 2}
   Items:
   - {fileID: 114794839171970682, guid: fed5e7064cecb6741a59123e14935ce1, type: 2}
   - {fileID: 114773133681845110, guid: 793146d46b584b64383d3ef370e16ae4, type: 2}
