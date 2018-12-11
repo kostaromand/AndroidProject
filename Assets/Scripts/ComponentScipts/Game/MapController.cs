@@ -69,7 +69,11 @@ public class MapController : MonoBehaviour
                 temp.Add(ver);
                 temp.Add(hor);
             }
+<<<<<<< HEAD
             while (MapPrototype[ver,hor].Type == CellType.Wall || createdItems.Values.Contains(temp, new ListValuesComparer()));
+=======
+            while (MapPrototype[ver,hor].Type == CellType.Wall || createdItems.Values.Contains(temp));
+>>>>>>> c64b935df7e782a658072aa37bd4bec3b157278b
             createdItems.Add(Items[randomItem], temp);
             Instantiate(Items[randomItem], new Vector3(x + ver * SpriteSize.x, y + hor * SpriteSize.y), Quaternion.identity, transform);
         }
