@@ -46,24 +46,29 @@ public class MapController : MonoBehaviour
     {
         float x = transform.position.x;
         float y = transform.position.y;
-        List<Item> createdItems = new List<Item>();
         int maxAmountItems = Random.Range(0, Items.Length);
+        Dictionary<Item, List<int>> createdItems = new Dictionary<Item, List<int>>();
         for (int i = 0; i < maxAmountItems; i++)
         {
+            List<int> temp;
             int ver = 0;
             int hor = 0;
             int randomItem = 0;
             do
             {
-                ver = Random.Range(0,mapSize.Horizontal-1);
-                hor = Random.Range(0, mapSize.Vertical-1);
-            }
-            while (MapPrototype[ver,hor].Type == CellType.Wall);
-            do {
                 randomItem = Random.Range(0, Items.Length);
             }
-            while (createdItems.Contains(Items[randomItem]));
-            createdItems.Add(Items[randomItem]);
+            while (createdItems.Keys.Contains(Items[randomItem]));
+            do
+            {
+                temp = new List<int>();
+                ver = Random.Range(0,mapSize.Horizontal-1);
+                hor = Random.Range(0, mapSize.Vertical-1);
+                temp.Add(ver);
+                temp.Add(hor);
+            }
+            while (MapPrototype[ver,hor].Type == CellType.Wall && createdItems.Values.Contains(temp));
+            createdItems.Add(Items[randomItem], temp);
             Instantiate(Items[randomItem], new Vector3(x + ver * SpriteSize.x, y + hor * SpriteSize.y), Quaternion.identity, transform);
         }
     }
