@@ -58,7 +58,9 @@ public class MapController : MonoBehaviour
             {
                 randomItem = Random.Range(0, Items.Length);
             }
-            while (createdItems.Keys.Contains(Items[randomItem]));
+
+            while (createdItems.ContainsKey(Items[randomItem]));
+            createdItems.Add(Items[randomItem], new List<int>() { 2,3});
             do
             {
                 temp = new List<int>();
@@ -67,9 +69,31 @@ public class MapController : MonoBehaviour
                 temp.Add(ver);
                 temp.Add(hor);
             }
-            while (MapPrototype[ver,hor].Type == CellType.Wall ||  createdItems.Values.Contains(temp));
+            while (MapPrototype[ver,hor].Type == CellType.Wall || createdItems.Values.Contains(temp, new ListValuesComparer()));
             createdItems.Add(Items[randomItem], temp);
             Instantiate(Items[randomItem], new Vector3(x + ver * SpriteSize.x, y + hor * SpriteSize.y), Quaternion.identity, transform);
         }
+    }
+}
+
+public class ListValuesComparer : IEqualityComparer<List<int>>
+{
+    public  bool Equals(List<int> b1, List<int> b2)
+    {
+        if (ReferenceEquals(b1, b2))
+            return true;
+
+        if (b1 == null || b2 == null)
+            return false;
+        for (int i = 0; i < System.Math.Min(b1.Count, b2.Count); i++)
+        {
+            if (b1[i] != b2[i])
+                return false;
+        }
+        return true;
+    }
+    public  int GetHashCode(List<int> ch)
+    {
+        return ch.GetHashCode();
     }
 }
