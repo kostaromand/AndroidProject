@@ -67,7 +67,7 @@ public class MapController : MonoBehaviour
                 temp.Add(ver);
                 temp.Add(hor);
             }
-            while (MapPrototype[ver,hor].Type == CellType.Wall || createdItems.Values.Contains(temp));
+            while (MapPrototype[ver,hor].Type == CellType.Wall ||  createdItems.Values.Contains(temp));
             createdItems.Add(Items[randomItem], temp);
             Instantiate(Items[randomItem], new Vector3(x + ver * SpriteSize.x, y + hor * SpriteSize.y), Quaternion.identity, transform);
         }
