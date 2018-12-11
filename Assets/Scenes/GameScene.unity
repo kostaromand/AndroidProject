@@ -1202,11 +1202,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4727330120392550, guid: 1d57ef5a540247942854e7828bb30dd9, type: 2}
       propertyPath: m_LocalScale.x
-      value: 2.6875696
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4727330120392550, guid: 1d57ef5a540247942854e7828bb30dd9, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2.3529406
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4727330120392550, guid: 1d57ef5a540247942854e7828bb30dd9, type: 2}
       propertyPath: m_LocalScale.z
@@ -1526,15 +1526,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.55812496
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.6375
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.815
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 70007193984930876, guid: 9b628088531a8254fa62f463af5c876c,
         type: 2}
@@ -1548,11 +1548,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.55812496
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4347249535761218, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.6375
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1941770139302874, guid: 9b628088531a8254fa62f463af5c876c, type: 2}
       propertyPath: m_IsActive
@@ -1572,6 +1572,11 @@ Prefab:
         type: 2}
       propertyPath: speed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 50180163124179140, guid: 9b628088531a8254fa62f463af5c876c,
+        type: 2}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114543267578427720, guid: 9b628088531a8254fa62f463af5c876c, type: 2}

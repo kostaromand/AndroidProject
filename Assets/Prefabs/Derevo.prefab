@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4318221758436684}
   - component: {fileID: 212173890213933990}
-  - component: {fileID: 61063162107486726}
+  - component: {fileID: 61315412593062702}
   m_Layer: 0
   m_Name: Derevo
   m_TagString: Wall
@@ -35,13 +35,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1120651429533096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.07114726, y: -2.006443, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61063162107486726
+--- !u!61 &61315412593062702
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +101,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bab3134029b25fe4e8cc2e3fdd87c5cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e94be2287c7c494aae3e782f76b29e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

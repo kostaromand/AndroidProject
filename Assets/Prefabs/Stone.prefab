@@ -9,44 +9,44 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1622790451527560}
+  m_RootGameObject: {fileID: 1059252077911586}
   m_IsPrefabAsset: 1
---- !u!1 &1622790451527560
+--- !u!1 &1059252077911586
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4969940475528120}
-  - component: {fileID: 212624248663977394}
-  - component: {fileID: 61446072215505148}
+  - component: {fileID: 4612312732070926}
+  - component: {fileID: 212040883763346948}
+  - component: {fileID: 61315882388618768}
   m_Layer: 0
-  m_Name: Kust
+  m_Name: Stone
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4969940475528120
+--- !u!4 &4612312732070926
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1622790451527560}
+  m_GameObject: {fileID: 1059252077911586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6898631, y: 1.8628062, z: 0}
+  m_LocalPosition: {x: -1.5726767, y: 0.6731006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61446072215505148
+--- !u!61 &61315882388618768
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1622790451527560}
+  m_GameObject: {fileID: 1059252077911586}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -66,12 +66,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!212 &212624248663977394
+--- !u!212 &212040883763346948
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1622790451527560}
+  m_GameObject: {fileID: 1059252077911586}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -101,7 +101,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e0459a12b1c37954c8deaa323e40acd8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 99399764f94fe1e459be997be3f043f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
