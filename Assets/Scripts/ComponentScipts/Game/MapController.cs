@@ -58,9 +58,7 @@ public class MapController : MonoBehaviour
             {
                 randomItem = Random.Range(0, Items.Length);
             }
-
-            while (createdItems.ContainsKey(Items[randomItem]));
-            createdItems.Add(Items[randomItem], new List<int>() { 2,3});
+            while (createdItems.Keys.Contains(Items[randomItem]));
             do
             {
                 temp = new List<int>();
